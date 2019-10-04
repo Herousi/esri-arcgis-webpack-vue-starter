@@ -1,7 +1,7 @@
-import { default as Auth } from '@/pages/auth/routes'
+import Auth from '@/pages/auth/routes'
 
 const routes = [
-    ...Auth
+  ...Auth
 ]
 
 export default routes

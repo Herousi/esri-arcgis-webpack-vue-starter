@@ -1,6 +1,5 @@
 
 /** @type import('@vue/cli-service').ProjectOptions */
-const fs = require('fs')
 const alias = require('./alias.config')
 module.exports = {
   // https://github.com/neutrinojs/webpack-chain/tree/v4#getting-started
@@ -15,14 +14,19 @@ module.exports = {
   },
   configureWebpack: {
     // Set up all the aliases we use in our app.
-    ...alias
+    resolve: {
+      alias: alias
+    }
   },
   css: {
     // Enable CSS source maps.
     sourceMap: true,
     loaderOptions: {
       sass: {
-        data: fs.readFileSync('./src/assets/style/_variables.scss', 'utf-8')
+        data: `@import "@/assets/style/empty/empty.sass"`
+      },
+      scss: {
+        data: `@import "@/assets/style/empty/empty.scss"; @import "@/assets/style/_variables.scss";`
       }
     }
   }

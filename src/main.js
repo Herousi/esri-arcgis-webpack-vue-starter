@@ -3,11 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import './plugins/plugins'
-import './plugins/nprogress'
-import './plugins/prototypes'
+import '@plugins/plugins'
+import '@plugins/nprogress'
+import '@plugins/prototypes'
 
-import './assets/style/index.scss'
+import '@style/index.scss'
 
 Vue.config.productionTip = false
 
