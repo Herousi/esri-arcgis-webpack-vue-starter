@@ -1,3 +1,5 @@
 import NProgress from 'nprogress'
 
-NProgress.configure({})
+NProgress.configure({
+  showSpinner: false
+})

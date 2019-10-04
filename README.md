@@ -49,7 +49,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [x] Import NProgress. ('/router/beforeEach.js' and 'afterEach.js') (tested)
 - [x] Import Axios and qs('/plugins/http').
 - [x] Import a basic event bus and add to Vue prototype.(this.$bus) (tested)
-- [x] Import lodash and add to Vue prototype.(this._)
+- [x] Import lodash and add to Vue prototype.(this._)(tested)
 - [x] Build basic API structure with Restful Design.('/services/api') (tested)
 - [x] Import global SCSS variables('/asstes/style/_variables.scss') (tested)
 - [x] Import localforage and add to Vue prototype. (this.$sotrage) (tested)
