@@ -11,6 +11,13 @@ vue add vuetify
 vue add electron-builder
 ```
 
+### Before start
+```
+Import proper global notification component.('plugins/http/interceptor', 'plugins/auth', 'router/beforeEach')
+
+Finish login and logout logic in Plugins/Auth module.
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -45,3 +52,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [x] Import lodash and add to Vue prototype.(this._)
 - [x] Build basic API structure with Restful Design.('/services/api')
 - [x] Import global SCSS variables('/asstes/style/_variables.scss')
+- [x] Import localforage and add to Vue prototype. (this.$sotrage)
+- [x]  Build basic Auth module.(un-tested)
