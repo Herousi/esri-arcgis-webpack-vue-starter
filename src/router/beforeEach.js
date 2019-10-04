@@ -1,6 +1,7 @@
+import NProgress from 'nprogress'
 const beforeEach = async (to, from, next) => {
-
-    next()
+  NProgress.start()
+  next()
 }
 
 export default beforeEach
