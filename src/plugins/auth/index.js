@@ -3,7 +3,44 @@ import api from '@/services/api'
 import router from '@/router'
 import localforage from 'localforage'
 import { isEmpty, trim, replace } from 'lodash'
+import utils from '@utils/client'
 import { setToken as setAjaxToken } from '@/plugins/http'
+// import noty from 'noty'
+
+export function loginCheck (payload) {
+  if ((!payload.phone && !payload.email && !payload.account) || (!payload.password && !payload.code)) {
+    return false
+  }
+
+  if (payload.email && !utils.isEmail(payload.email)) {
+    return false
+  }
+
+  if (payload.phone && !utils.isPhone(payload.phone)) {
+    return false
+  }
+
+  let params = {}
+
+  if (payload.account) {
+    if (utils.isEmail(payload.account)) {
+      params.email = payload.account
+    } else if (utils.isPhone(payload.account)) {
+      params.phone = payload.account
+    } else {
+      return false
+    }
+  }
+
+  if (payload.password && utils.isPassword(payload.password)) {
+    params.password = payload.password
+  } else if (payload.code && utils.isCode(payload.code)) {
+    params.code = payload.code
+  } else {
+    return false
+  }
+  return params
+}
 
 export default {
   get token () {
@@ -15,36 +52,20 @@ export default {
   get user () {
     return vuex.state.auth.user
   },
-  login: {
-    async password (account, password) {
-      if (!account || !password) {
-        // Toast.eror('Missing params')
-        return
-      }
-      // let res = await api.auth.post(account, password)
-      if (res) {
-      // this.setToken(res.token)
-      // this.setUSer(res.user)
+  async login (payload) {
+    const params = loginCheck(payload)
+    if (!params) return false
+
+    let res = await api.auth.store(params)
+    console.log(res)
+    if (res) {
+      this.setToken(res.token)
       // Toast.success('Success!')
-      // return res
-      }
-    },
-    async code (account, code) {
-      if (!account || !code) {
-        // Toast.eror('Missing params')
-        return
-      }
-      // let res = await api.auth.post(account, password)
-      if (res) {
-      // this.setToken(res.token)
-      // this.setUSer(res.user)
-      // Toast.success('Success!')
-      // return res
-      }
+      return res
     }
   },
   async logout () {
-    let res = await api.session.delete()
+    let res = await api.auth.destroy()
     if (res) {
       await this.removeToken()
       // Toast.success('Logout Success!')
@@ -78,6 +99,7 @@ export default {
     }
   },
   async setToken (token = false) {
+    console.log(token)
     if (!token) {
       return this.removeToken()
     }

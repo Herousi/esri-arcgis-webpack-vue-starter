@@ -1,4 +1,4 @@
-import { Message } from 'element-ui'
+// import { Message } from 'element-ui'
 import Auth from '@/plugins/auth'
 
 export default http => {
@@ -28,19 +28,19 @@ export default http => {
 
       switch (error.response.status) {
         case 401:
-          Message.error('无权访问，请重新登录。')
+          // Message.error('无权访问，请重新登录。')
           Auth.logout()
           break
         case 403:
-          Message.error(error.response.data.message || '您没有此操作权限！')
+          // Message.error(error.response.data.message || '您没有此操作权限！')
           break
         case 500:
         case 501:
         case 503:
-          Message.error('服务器出了点小问题，请联系技术支持！')
+          // Message.error('服务器出了点小问题，请联系技术支持！')
           break
         default:
-          Message.error(error.response.data.message || '连接错误，请稍后再试')
+          // Message.error(error.response.data.message || '连接错误，请稍后再试')
           break
       }
       return Promise.reject(error.response)

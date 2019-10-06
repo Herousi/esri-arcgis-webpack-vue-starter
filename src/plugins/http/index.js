@@ -13,7 +13,7 @@ const http = axios.create({
   }
 })
 
-// interceptors(http)
+interceptors(http)
 
 export default http
 
