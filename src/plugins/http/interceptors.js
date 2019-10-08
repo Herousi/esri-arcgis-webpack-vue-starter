@@ -1,4 +1,4 @@
-// import { Message } from 'element-ui'
+import Noty from '@plugins/noty.js'
 import Auth from '@/plugins/auth'
 
 export default http => {
@@ -26,23 +26,28 @@ export default http => {
         return Promise.reject(error)
       }
 
-      switch (error.response.status) {
-        case 401:
-          // Message.error('无权访问，请重新登录。')
-          Auth.logout()
-          break
-        case 403:
-          // Message.error(error.response.data.message || '您没有此操作权限！')
-          break
-        case 500:
-        case 501:
-        case 503:
-          // Message.error('服务器出了点小问题，请联系技术支持！')
-          break
-        default:
-          // Message.error(error.response.data.message || '连接错误，请稍后再试')
-          break
+      if (error.response.data.message) {
+        Noty.error(error.response.data.message)
+      } else {
+        switch (error.response.status) {
+          case 401:
+            Noty.error('无权访问，请重新登录。')
+            Auth.logout()
+            break
+          case 403:
+            Noty.error('您没有此操作权限！')
+            break
+          case 500:
+          case 501:
+          case 503:
+            Noty.error('服务器出了点小问题，请联系技术支持！')
+            break
+          default:
+            Noty.error('连接错误，请稍后再试')
+            break
+        }
       }
+
       return Promise.reject(error.response)
     }
   )
