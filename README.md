@@ -12,7 +12,8 @@
 - [x] Build basic API structure with Restful Design.('/services/api') (tested)
 - [x] Import global SCSS variables('/asstes/style/_variables.scss') (tested)
 - [x] Import localforage and add to Vue prototype. (this.$sotrage) (tested)
-- [x]  Build basic Auth module.(un-tested)
+- [x] Build basic Auth module.(un-tested)
+- [x] Import Noty.js as Default notification snackbar. 
 
 
 ## Project setup
