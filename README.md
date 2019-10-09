@@ -14,6 +14,7 @@
 - [x] Import localforage and add to Vue prototype. (this.$sotrage) (tested)
 - [x] Build basic Auth module.(un-tested)
 - [x] Import Noty.js as Default notification snackbar. 
+- [x] import esri arcgis
 
 
 ## Project setup
