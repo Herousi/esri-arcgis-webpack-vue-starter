@@ -1,4 +1,4 @@
-import vuex from './vuex'
+import vuex from './vuex/index.js'
 import api from '@/services/api'
 import router from '@/router'
 import localforage from 'localforage'

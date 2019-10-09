@@ -1,5 +1,5 @@
 import axios from 'axios'
-import interceptors from './interceptors'
+import interceptors from './interceptors.js'
 import config from '@/config'
 
 // allow use http client without Vue instance
